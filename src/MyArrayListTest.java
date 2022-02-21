@@ -6,6 +6,19 @@ class MyArrayListTest {
 
     @org.junit.jupiter.api.Test
     void sort() {
+        //given
+        MyArrayList<Integer> ints = new MyArrayList<>();
+        ints.add(3);
+        ints.add(4);
+        ints.add(2);
+        ints.add(1);
+        //when
+        ints.sort(Integer::compareTo);
+        //then
+        assertEquals(1,ints.get(0));
+        assertEquals(2,ints.get(1));
+        assertEquals(3,ints.get(2));
+        assertEquals(4,ints.get(3));
     }
 
     @org.junit.jupiter.api.Test
@@ -16,7 +29,6 @@ class MyArrayListTest {
         strings.add("hello world");
         //then
         assertFalse(strings.isEmpty());
-        assertTrue(strings.isEmpty());//here we fail because list contains string
     }
 
     @org.junit.jupiter.api.Test
@@ -36,11 +48,11 @@ class MyArrayListTest {
         //when
         names.add(0,"Alex");
         names.add(1,"Andrew");
-        names.add(2,"Anton");
+        names.add(0,"Anton");
         //then
-        assertEquals("Alex",names.get(0));
-        assertEquals("Andrew",names.get(1));
-        assertEquals("Anton",names.get(2));
+        assertEquals("Alex",names.get(1));
+        assertEquals("Andrew",names.get(2));
+        assertEquals("Anton",names.get(0));
 
     }
 
@@ -48,11 +60,10 @@ class MyArrayListTest {
     void size() {
         //given
         MyArrayList<Integer> ints = new MyArrayList<>();
+        //when
         ints.add(1);
         ints.add(2);
         ints.add(3);
-        //when
-        System.out.println(ints.size() == 3);
         //then
         assertEquals(3, ints.size());
     }
